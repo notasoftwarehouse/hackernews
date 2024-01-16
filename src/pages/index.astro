@@ -1,6 +1,20 @@
 ---
+import {
+  getCommentsByStoryId,
+  getFrontPage,
+  getTopStories,
+  getResultsFromSearch,
+  getStoryById,
+} from "@/lib/api";
 import Layout from "../layouts/Layout.astro";
 import "@/styles/globals.css";
+
+// const res = await getFrontPage();
+// const res = await getTopStories({ page: 1 });
+// const res = await getCommentsByStoryId({ storyId: 39014426 });
+// const res = await getResultsFromSearch({ query: "reactjs", page: 1 });
+const res = await getStoryById({ storyId: 39014426 });
+console.log(res);
 ---
 
 <Layout title="Hackenews Press">
