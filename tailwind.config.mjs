@@ -19,6 +19,9 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        geist: ["Geist Sans", "sans-serif"],
+      },
       keyframes: {
         "accordion-down": {
           from: { height: "0" },

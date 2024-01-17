@@ -7,16 +7,24 @@ import {
   getStoryById,
 } from "@/lib/api";
 import Layout from "../layouts/Layout.astro";
+import StoryCard from "@/components/StoryCard.astro";
 import "@/styles/globals.css";
+import type { Story } from "@/lib/types";
 
-// const res = await getFrontPage();
+const frontPage = await getFrontPage();
 // const res = await getTopStories({ page: 1 });
 // const res = await getCommentsByStoryId({ storyId: 39014426 });
 // const res = await getResultsFromSearch({ query: "reactjs", page: 1 });
-const res = await getStoryById({ storyId: 39014426 });
-console.log(res);
+// const res = await getStoryById({ storyId: 39014426 });
+const {} = frontPage;
 ---
 
 <Layout title="Hackenews Press">
-  <p class="text-2xl">hello</p>
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <main>
+      <ol class="list-decimal list-inside">
+        {frontPage.map((story: Story) => <StoryCard {...story} />)}
+      </ol>
+    </main>
+  </div>
 </Layout>

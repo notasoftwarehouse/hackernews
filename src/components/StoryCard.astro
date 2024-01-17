@@ -1,0 +1,14 @@
+---
+const {author, points, title, url, updated_at, num_comments} = Astro.props;
+
+---
+      <li class="mb-2">
+        <a class="hover:underline" href={url} target="_blank">
+            {title}
+        </a>
+        <br class="sm:hidden"/>
+        <span class="text-gray-500 text-sm"> {points} points by {author} 2 hours ago | {num_comments} comments</span>
+
+      </li>
+    </ol>
+</main>
