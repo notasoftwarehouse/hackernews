@@ -1,10 +1,21 @@
-export type YouTubeLink = {
-  videoId: string;
-  videoThumbnail: string;
-};
-
-export type NormalLink = {
-  title: string;
-  description: string;
-  image: string;
-};
+export type PreviewData =
+  | {
+      url: string;
+      title: string;
+      siteName: string | undefined;
+      description: string | undefined;
+      mediaType: string;
+      contentType: string | undefined;
+      images: string[];
+      videos: {
+        url: string | undefined;
+        secureUrl: string | undefined;
+        type: string | undefined;
+        width: string | undefined;
+        height: string | undefined;
+      }[];
+      favicons: any[];
+    }
+  | {
+      [key: string]: any;
+    };
