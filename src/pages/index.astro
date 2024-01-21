@@ -20,7 +20,7 @@ const frontPage = await getFrontPage();
 <Layout title="Hackenews Press">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <main>
-      <ol class="list-decimal list-inside">
+      <ol class="list-decimal">
         {frontPage.map((story: Story) => <StoryCard {...story} />)}
       </ol>
     </main>

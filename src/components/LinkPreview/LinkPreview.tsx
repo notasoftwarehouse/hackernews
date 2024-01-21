@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
 import { getLinkPreview, type PreviewData } from ".";
+import { Skeleton } from "../ui/skeleton";
+import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
+import { AlertCircle } from "lucide-react";
 
 interface LinkPreviewProps {
   url: string;
@@ -26,11 +29,25 @@ function LinkPreview({ url }: LinkPreviewProps) {
   }, [url]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (
+      <div className="flex items-center space-x-4">
+        <Skeleton className="h-12 w-12 " />
+        <div className="space-y-2">
+          <Skeleton className="h-4 w-[250px]" />
+          <Skeleton className="h-4 w-[200px]" />
+        </div>
+      </div>
+    );
   }
 
   if (!previewData) {
-    return <p>Failed to fetch link preview.</p>;
+    return (
+      <Alert variant="destructive">
+        <AlertCircle className="h-4 w-4" />
+        <AlertTitle>Oops!</AlertTitle>
+        <AlertDescription>Failed to fetch link preview.</AlertDescription>
+      </Alert>
+    );
   }
 
   const handleClick = () => {
@@ -38,8 +55,20 @@ function LinkPreview({ url }: LinkPreviewProps) {
   };
 
   return (
-    <div onClick={handleClick} className="cursor-pointer">
-      <div>hello</div>
+    <div
+      onClick={handleClick}
+      className="cursor-pointer flex flex-row max-w-lg gap-2"
+    >
+      <div className="basis-1/3">
+        <img
+          src={previewData?.images[0]}
+          alt={previewData?.siteName || previewData?.title}
+        />
+      </div>
+      <div className="basis-2/3 flex flex-col gap-1">
+        <p className="text-base">{previewData.title}</p>
+        <p className="text-xs line-clamp-3 ">{previewData.description}</p>
+      </div>
     </div>
   );
 }
