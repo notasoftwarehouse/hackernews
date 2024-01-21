@@ -5,7 +5,7 @@ import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://hackernews.press",
+  site: "https://www.hackernews.press",
   integrations: [
     react(),
     tailwind({
